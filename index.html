@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jquery 001</title>
+	<script src="jquery-3.1.1.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
+	<script src="main.js" type="text/javascript"></script>
+	<style>
+		*{
+			padding:0px;
+			margin:0px;
+		}
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		.container{
+			width: 80%;
+			margin:100px auto;
+		}
+		#left{
+			width: 50%;
+			float: left;
+		}
+		#left textarea {
+			padding: 5px;
+			width: 80%;
+			float: left;
+		}
+		#right{
+			width: 50%;	
+			float: left;
+		}
+		button{
+			padding: 5px 10px;
+			margin-right: 15px;
+			float: left;
+		}
+		#list{
+			border:1px solid navy;
+			width: 100%;
+			float: left;
+			height: 250px;
+			overflow: scroll;
+		}
+		#list li{
+			list-style:none;
+			padding: 5px 5px;
+		}
+		#button{
+			width: 100%;
+			float: left;
+			margin-top: 20px;
+		}
+		#result{
+			margin-top: 20px;
+			width: 100%;
+			float: left;
+		}
+		#result li{
+			list-style: none;
+			padding: 5px 5px;
+		}
+	</style>
+
+</head>
+<body>
+	<section class="container">
+		<h2>To do list</h2>
+		<section id="left">
+			<textarea id="text" rows="10"></textarea>
+			<div id='button'><button id="import">Import</button><button id="importTop">Import Top</button></div>
+		</section><!--end #left-->
+		<section id="right">
+			<ul id="list">
+				
+			</ul><!--end ul-->
+			<div id='button'><button id='del'>Delete</button><button id="export">Export</button><button id='order'>Order</button></div>
+			<ul id="result">
+				
+			</ul>
+		</section><!--end- right-->
+	</section><!--end .container-->
+</body>
+</html>
