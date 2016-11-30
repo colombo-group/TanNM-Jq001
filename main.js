@@ -24,7 +24,7 @@ $(document).ready(function(){
 		var text="";
 		for (var i = 0; i < leng; i++) {
 		 	//thêm vào list ul
-		 	text+="<li>< a 	href='#'>";
+		 	text+="<li><a href='#'>";
 		 	text+=rowArr[i];
 		 	text+="</a></li>";
 		 }
