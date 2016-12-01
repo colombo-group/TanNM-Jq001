@@ -1,13 +1,15 @@
 $(document).ready(function(){
 	//import
+	var del = [];
 	$('#import').on('click',function(){
 		var rowArr = GetText();
 		var leng = rowArr.length;
 		var text="";
+		var click = [];
 		for (var i = 0; i < leng; i++) {
 		 	//thêm vào list ul
 		 	if(rowArr[i]!=""){
-		 		text+="<li><a href='#'>";
+		 		text+="<li id='li"+i+"'><a href='#'>";
 		 		text+=rowArr[i];
 		 		text+="</a></li>";
 		 	}
@@ -15,6 +17,7 @@ $(document).ready(function(){
 		 }
 		 $('#list').append(text);
 		 $('#text').val(''); 
+		 Paste();
 	});
 
 	//import top
@@ -24,24 +27,45 @@ $(document).ready(function(){
 		var text="";
 		for (var i = 0; i < leng; i++) {
 		 	//thêm vào list ul
+		 	if(rowArr[i]!=""){
 		 	text+="<li><a href='#'>";
 		 	text+=rowArr[i];
 		 	text+="</a></li>";
 		 }
+		 }
 		 $('#list').prepend(text);
 		 $('#text').val(''); 
+		 Paste();
 	});
 
+	function Paste(){
+		var leng = $('#list li').length;
+		for (var i = 0; i <  leng; i++) {
+			del[i] = 0;
+		}
+	}
 	//Select
 	$('#list').on('click','li',function(){
-		$(this).children('a').css({
-			color: 'grey'
-		});
-		$(this).addClass('del');
+		var index = $(this).index();
+		del[index]++;
+		if(parseInt(del[index])%2==0){
+			//$(this).css('color', 'red');
+			$(this).removeClass('del');
+
+		}
+		else{
+			$(this).addClass('del');
+		}
 	});
+
 	//Delete
 	$('#del').on('click',function(){
-		$('.del').remove();
+		if($('#list li').hasClass('del')){
+			$('.del').remove();
+		}
+		else{
+			$('#list li').last().remove();
+		}
 	});
 
 	//Export
@@ -72,10 +96,11 @@ $(document).ready(function(){
 		}
 	});
 	//remove
-	$('#result').on('click',function(){
-		$("input:checked").parent('li').remove();
-	});
-
+	$('#result').on('click','input',function(){
+		$(this).parent('li').fadeOut('3000', function() {
+			
+		});
+	})
 	//Get TExt
 	function GetText(){
 		var text = $('#text').val();
